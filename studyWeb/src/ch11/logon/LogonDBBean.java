@@ -9,7 +9,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import work.crypt.SHA256;
 
 public class LogonDBBean {
 	
@@ -36,12 +35,9 @@ public class LogonDBBean {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-		// SHA256 sha = SHA256.getInsatnce();
 		try {
 			conn = getConnection();
 			
-		/*	String orgPass = member.getPasswd();
-			String shaPass = sha.getSha256(orgPass.getBytes());*/
 			
 			pstmt = conn.prepareStatement("insert into member values (?,?,?,?,?,?)");
 			pstmt.setString(1, member.getId());
@@ -159,7 +155,6 @@ public class LogonDBBean {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int x = -1;
-		
 		try {
 			conn = getConnection();
 			String pass = member.getPasswd();

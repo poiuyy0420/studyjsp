@@ -22,22 +22,25 @@ $(document).ready(function(){
 		});
 	});
 	
-	//modifyForm.jsp 페이지의 [수정] 버튼 클릭 시 자동실행
-	//수정 폼에 입력한 값을 갖고 modifyPro.jsp 실행
+	// modifyForm.jsp 페이지의 [수정]버튼 클릭 시 자동 실행
+	// 수정 폼에 입력한 값을 갖고 modifyPro.jsp 실행
 	$("#modifyProcess").click(function(){
-		var query = {id:$("#id").val(),
-				passwd:$("#passwd").val(),
-				name:$("#name").val(),
-				address:$("#address").val(),
-				tel:$("#tel").val()};
+		var query = {
+				id : $("#id").val(),
+				passwd : $("#passwd").val(),
+				name : $("#name").val(),
+				address : $("#address").val(),
+				tel : $("#tel").val()
+		}
+		
 		$.ajax({
-			type:"post",
-			url:"modifyPro.jsp",
-			data:query,
-			success:function(data){
-				if(data==1){ //정보수정성공
-					alert("회원정보가 수정되었습니다");
-					window.location.href="main.jsp";
+			type : "post",
+			url : "modifyPro.jsp",
+			data : query,
+			success : function(data){
+				if(data == 1){ // 정보 수정 성공
+					alert("회원정보가 수정되었습니다.");
+					window.location.href = "main.jsp";
 				}
 			}
 		});
@@ -63,7 +66,7 @@ $(document).ready(function(){
 					//회원탈퇴 페이지 deletePro.jsp실행
 					$.ajax({
 						type:"post",
-						url:"memberCheck.jsp",
+						url:"deletePro.jsp",
 						data:query,
 						success:function(data){
 							if(data==1){ //탈퇴성공
